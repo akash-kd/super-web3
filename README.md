@@ -1,6 +1,13 @@
 # Super Web 3 - Backend Task
 
-`<about the task>`
+Transaction - CRUD Task.
+model transaction {
+    name: string, must,
+    amount: string, must,
+    current: string, must,
+    from_user_id: `<id>`
+    to_user_id: `<id>`
+}
 
 ## Tech Stack: 
 1. Node : Javascript Runtime
@@ -17,3 +24,9 @@
 3. I have customized the VS Code's `launch.json` for this Repo, using that
  we can start the project
 4. hit the API with `http://localhost:8080/` -> Response with `Hello World`
+
+
+## Time Constrains:
+1. Couldnt name function properly.
+2. Couldnt write more test cases.
+3. We could write more functionalities.
