@@ -23,6 +23,7 @@ export default class SuccessResponse {
   send(res) {
     if (this.response) {
       this.res.status(this.status).json({
+        status: this.status,
         message: this.message,
         data: this.data,
       });

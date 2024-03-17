@@ -4,8 +4,10 @@ import { config } from "dotenv";
 import RouteHandler from "../helper/route_handler.js";
 import UserRouterHandler from "./module/user/user.app.js";
 import BookRouterHandler from "./module/book/book.app.js";
+import TransactionRouteHandler from "./module/transactions/transaction.app.js";
 import SuccessResponse from "../helper/success_response.js";
 import Book from "../models/book.model.js";
+import cors from "cors";
 
 const AppRouter = new RouteHandler();
 const APIResponse = new SuccessResponse();
@@ -33,5 +35,7 @@ AppRouter.setMethod("/", "get")
   
 UserRouterHandler.mount(app);
 BookRouterHandler.mount(app);
+TransactionRouteHandler.mount(app);
+
 
 export default app;

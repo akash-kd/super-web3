@@ -16,3 +16,30 @@ export async function Create_User(req, res) {
         .setData(user)
         .send(res);
 }
+
+
+export async function Get_User(req, res) {
+    const { id } = req.body;
+    console.log(id)
+    const user = await User.findOne({where: {id}})
+    return APISuccessResponse
+        .setData(user)
+        .send(res);
+}
+
+
+export async function Update_User(req, res) {
+    const { id, username, email, password } = req.body;
+    const user = await User.update({username, email, password}, {where: {id}})
+    return APISuccessResponse
+        .setData(user)
+        .send(res);
+}
+
+export async function Delete_User(req, res) {
+    const { id } = req.body;
+    const user = await User.destroy({where: {id}})
+    return APISuccessResponse
+        .setData(user)
+        .send(res);
+}

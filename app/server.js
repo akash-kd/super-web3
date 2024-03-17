@@ -6,6 +6,7 @@ import { config } from "dotenv";
 import { debug } from "../helper/debug.js";
 import User from "../models/user.model.js";
 import Book from "../models/book.model.js";
+import Transaction from "../models/transactions.model.js";
 
 config({ path: ".env" });
 
@@ -14,14 +15,14 @@ async function main() {
   // set force to true to overwrite any existing tables - all data will be lost!
   try {
     await sequelize.authenticate();
-    await sequelize.sync({ force: true }); 
+    await sequelize.sync({ alter: true }); 
     debug(nodeNotifier.notify({
       title: "Server Running On",
       message: `http://localhost:${port}`,
     }))
     app.listen(port, () => {
-      console.log(`-> Environment: ${process.env.ENVIRONMENT}`);
-      console.log(`-> Listeningo On Port: http://localhost${port}`);
+      console.log('\x1b[32m%s\x1b[0m', `-> Environment: ${process.env.ENVIRONMENT}`);
+      console.log('\x1b[32m%s\x1b[0m', `-> Listening On Port: http://localhost:${port}`);
     });
   } catch (error) {
     debug(nodeNotifier.notify({
